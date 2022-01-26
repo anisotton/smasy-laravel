@@ -80,7 +80,21 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'br',
+
+    /*
+    | [Custom config]
+    |--------------------------------------------------------------------------
+    | Application Enabled Locales
+    |--------------------------------------------------------------------------
+    |
+    | Enabled locales determine the locales that can be used by the translation 
+    | service provider. You can add any locale initials to this array that the 
+    | application will support.
+    |
+    */
+
+    'enabled_locales' => ['en'=>'English', 'br'=>'Português'],
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +107,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'br',
 
     /*
     |--------------------------------------------------------------------------

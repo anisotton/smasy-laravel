@@ -228,7 +228,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'Filtrar',
+            'text'         => 'search',
             'topnav_right' => true,
         ],
         [
@@ -239,7 +239,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'Filtrar',
+            'text' => 'search',
         ],
         [
             'text' => 'blog',
@@ -247,7 +247,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Paginas',
+            'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
@@ -255,12 +255,12 @@ return [
         ],
         ['header' => 'CONFIGURAÇÔES DA CONTA'],
         [
-            'text' => 'Perfil',
+            'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Alterar Senha',
+            'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],

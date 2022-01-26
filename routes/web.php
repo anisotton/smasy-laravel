@@ -1,6 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{
+    Route,
+    App,
+    Auth
+};
+
+
+\Illuminate\Support\Facades\URL::defaults(['language' => app('getClientLanguage')]);
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', App::currentLocale());
+
+Route::group(['prefix' => '{language}','middleware' => 'set.language'], function () {
+
+    Auth::routes();
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/', function () {
+            return view('welcome');
+        });
+    });
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
