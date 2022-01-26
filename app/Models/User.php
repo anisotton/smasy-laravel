@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends \TCG\Voyager\Models\User
+class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
