@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
+
 
 class User extends Authenticatable
 {
@@ -58,4 +60,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function adminlte_profile_url(){
+        return url("profile",['id'=>auth()->user()->id]);
+    }
+
+    public function adminlte_image(){
+        if(Storage::disk('avatars')->exists(auth()->user()->avatar)){
+            return Storage::disk('avatars')->url(auth()->user()->avatar);
+        }
+        return Storage::disk('avatars')->url('default.png');
+    }
+
 }

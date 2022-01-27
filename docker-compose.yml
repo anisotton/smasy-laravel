@@ -3,7 +3,7 @@ services:
   #PHP Service
   app:
     build:
-      args: 
+      args:
           user: smasy
           uid: 1000
       context: ./
@@ -21,10 +21,10 @@ services:
       - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xy-xdebug.ini
       #- ./.logs/xdebug:/logs/xdebug
-      #- ./.logs/php-fpm/:/tmp/xdebug_log  
+      #- ./.logs/php-fpm/:/tmp/xdebug_log
     networks:
       - app-network
-    depends_on: 
+    depends_on:
       - db
 
   #Nginx Service
@@ -39,7 +39,7 @@ services:
     volumes:
       - ./:/var/www
       - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
-      #- ./.logs/nginx:/var/log/nginx
+      #- ./.logs/nginx:/var/log/nginx/
       #- ./.logs/nginx/xdebug:/etc/nginx/xdebug
       #- ./.logs/nginx/hosts:/etc/nginx/hosts
     networks:
