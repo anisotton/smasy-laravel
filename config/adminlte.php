@@ -253,7 +253,7 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'CONFIGURAÇÔES DA CONTA'],
+        ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
