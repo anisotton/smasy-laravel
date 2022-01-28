@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => '{language}',
 
     'domain' => null,
 
@@ -132,9 +132,9 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        //Features::registration(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
+        Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([

@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\{
     Route,
     App,
-    Auth
+    Auth,
+    URL
 };
 
 
-\Illuminate\Support\Facades\URL::defaults(['language' => app('getClientLanguage')]);
+URL::defaults(['language' => app('getClientLanguage')]);
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +24,12 @@ use Illuminate\Support\Facades\{
 Route::redirect('/', App::currentLocale());
 
 Route::group(['prefix' => '{language}','middleware' => 'set.language'], function () {
-
-    Auth::routes();
-
     Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             return view('welcome');
-        });
+        })->name('home');
     });
+
+    Auth::routes();
 });
 
