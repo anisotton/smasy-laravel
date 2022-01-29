@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\{
     Auth,
     URL
 };
+use App\Http\Livewire\Smasy\{
+    Settings
+};
 
 
 URL::defaults(['language' => app('getClientLanguage')]);
@@ -24,11 +27,18 @@ URL::defaults(['language' => app('getClientLanguage')]);
 Route::redirect('/', App::currentLocale());
 
 Route::group(['prefix' => '{language}','middleware' => 'set.language'], function () {
+
+    Route::get('/settings/users',[Settings::class,'users'])->name('settings.users');
+
     Route::middleware('auth')->group(function () {
+
         Route::get('/', function () {
             return view('welcome');
         })->name('home');
+
+
     });
+
 
     Auth::routes();
 });

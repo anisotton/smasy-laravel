@@ -318,6 +318,22 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+        ['header' => 'system_settings'],
+        [
+            'text' => 'users',
+            'url'  => 'settings/users',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        [
+            'text' => 'access_rules',
+            'url'  => 'settings/access-rules',
+            'icon' => 'fas fa-fw fa-users-cog',
+        ],
+        [
+            'text' => 'layout_settings',
+            'url'  => 'settings/layout',
+            'icon' => 'fas fa-fw fa-tv',
+        ],
     ],
 
     /*

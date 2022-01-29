@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('getClientLanguage', function () {
 
+            if(request()->header('sec-fetch-dest') == 'document'){
+                return null;
+            }
+
             $seg = request()->segment(1);
             if (is_null($seg)) {
                 return config('app.fallback_locale');
@@ -49,11 +53,10 @@ class AppServiceProvider extends ServiceProvider
 
             }
             if (in_array($locale, array_keys(config('app.enabled_locales')), true)) {
-                $return =  $locale;
+                return $locale;
             }
             // if the cookie or the browser's locale is invalid or unknown we fallback
-            $return = $return??config('app.fallback_locale');
-            return $return;
+            return config('app.fallback_locale');
         });
     }
 
