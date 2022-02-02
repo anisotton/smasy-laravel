@@ -28,10 +28,13 @@ class Settings extends Component
         $config = [
             'data' => $users,
             'order' => [[1, 'asc']],
-            'columns' => [null, null, null, ['orderable' => false]],
+            'columns' => [['data' =>'id'],['data' =>'name'],['data' =>'email']],
         ];
         return view('livewire.smasy.users', [
             'config' => $config,
         ]);
+    }
+    public function new(){
+        return view('livewire.smasy.user');
     }
 }

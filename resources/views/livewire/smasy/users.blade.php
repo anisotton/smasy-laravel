@@ -1,6 +1,13 @@
 @extends('adminlte::page')
 
 {{-- Setup data for datatables --}}
+
+@section('content_header')
+
+<h1>User</h1>
+{{--#TODO: exibir titulo multilanguage--}}
+{{--#TODO: melhorar layout--}}
+@stop
 @php
 $heads = [
     'ID',
@@ -22,7 +29,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 @endphp
 
 @section('content')
-
+<x-adminlte-button label="Novo" theme="primary" icon="fas fa-lg fa-save" wire:click="new()"/>
 
     {{-- Minimal example / fill data using the component slot --}}
     <x-adminlte-datatable id="table1" :heads="$heads" head-theme="light" :config="$config" with-buttons striped hoverable footer-theme="light" beautify>
@@ -39,7 +46,9 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 @section('js')
     <script>
         $(document).ready( function () {
-            $('#table1').DataTable();
+           // $('#table1').DataTable();
         } );
     </script>
 @stop
+
+@section('plugins.Datatables', true)
