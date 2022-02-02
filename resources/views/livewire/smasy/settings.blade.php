@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
 @section('content')
-    <p>Reger puta veia.</p>
+    <p>Anderson gay.</p>
 @stop
 

@@ -19,19 +19,11 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                    <i class="fa fa-lg fa-fw fa-eye"></i>
                </button>';
 
-$config = [
-    'data' =>
-    [
-        [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-        [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-        [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-    ],
-    'order' => [[1, 'asc']],
-    'columns' => [null, null, null, ['orderable' => false]],
-];
 @endphp
 
 @section('content')
+
+
     {{-- Minimal example / fill data using the component slot --}}
     <x-adminlte-datatable id="table1" :heads="$heads" head-theme="light" :config="$config" with-buttons striped hoverable footer-theme="light" beautify>
         @foreach($config['data'] as $row)
