@@ -17,28 +17,29 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
+        $lang = $request->segment(1);
+        if ($lang == 'api') {
+            return $next($request);
+        }
 
-        $url_lang = $request->segment(1);
-        if($url_lang !== 'api') {
+        if (!in_array($lang, array_keys(config('app.enabled_locales')), true)) {
+            $lang = app('getClientLanguage');
 
-            if (!in_array($url_lang, array_keys(config('app.enabled_locales')), true)
-                && in_array($request->header('sec-fetch-dest'), ['document','iframe'], true)) {
+            if (in_array($request->header('sec-fetch-dest'), ['document', 'iframe'], true)) {
 
-                    $url_lang = app('getClientLanguage');
+                $new_url = $lang . $request->server->get('REQUEST_URI');
 
-                    $new_url = $url_lang.$request->server->get('REQUEST_URI');
+                $request2 = $request->duplicate(null, null, ['pathInfo' => $new_url]);
 
-                    $request2 = $request->duplicate(null,null, ['pathInfo'=>$new_url]);
+                $request2->server->set('REQUEST_URI', $new_url);
 
-                    $request2->server->set('REQUEST_URI', $new_url);
+                $request2->getPathInfo();
 
-                    $request2->getPathInfo();
-
-                    $request = $request2;
-
+                $request = $request2;
             }
         }
-        app()->setLocale($url_lang);
+
+        app()->setLocale($lang);
 
         return $next($request);
     }

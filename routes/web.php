@@ -26,7 +26,7 @@ URL::defaults(['language' => app('getClientLanguage')]);
 
 Route::redirect('/', App::currentLocale());
 
-Route::group(['prefix' => '{language}','middleware' => 'set.language'], function () {
+Route::group(['prefix' => '{language}',], function () {
 
     Route::get('/settings/users',[Settings::class,'users'])->name('settings.users');
 

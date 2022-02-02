@@ -23,10 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('getClientLanguage', function () {
 
-            if(request()->header('sec-fetch-dest') == 'document'){
-                return null;
-            }
-
             $seg = request()->segment(1);
             if (is_null($seg)) {
                 return config('app.fallback_locale');
