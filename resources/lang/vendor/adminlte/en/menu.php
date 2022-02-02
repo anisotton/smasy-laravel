@@ -16,6 +16,4 @@ return [
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
-    'system_settings'               => 'SYSTEM SETTINGS',
-    'users'                         => 'Users',
 ];
