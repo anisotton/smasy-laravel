@@ -4,8 +4,8 @@
 
 @section('content_header')
 
-<h1>User</h1>
-{{--#TODO: exibir titulo multilanguage--}}
+<h1>{{ __('adminlte::user.user') }}</h1>
+
 {{--#TODO: melhorar layout--}}
 @stop
 @php
