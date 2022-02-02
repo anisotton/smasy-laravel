@@ -31,6 +31,12 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 @section('content')
 <x-adminlte-button label="Novo" theme="primary" icon="fas fa-lg fa-save" wire:click="new()"/>
 
+<button wire:click="new()">
+
+    Add Todo
+
+</button>
+
     {{-- Minimal example / fill data using the component slot --}}
     <x-adminlte-datatable id="table1" :heads="$heads" head-theme="light" :config="$config" with-buttons striped hoverable footer-theme="light" beautify>
         @foreach($config['data'] as $row)
