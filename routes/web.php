@@ -30,6 +30,8 @@ Route::group(['prefix' => '{language}',], function () {
 
     Route::get('/settings/users',[Settings::class,'users'])->name('settings.users');
 
+    Route::get('/settings/createUser',[Settings::class,'new'])->name('settings.createUser');
+
     Route::middleware('auth')->group(function () {
 
         Route::get('/', function () {

@@ -35,6 +35,6 @@ class Settings extends Component
         ]);
     }
     public function new(){
-        return view('livewire.smasy.user');
+        return view('livewire.smasy.createUser');
     }
 }
