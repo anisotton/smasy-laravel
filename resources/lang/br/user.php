@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'user'                              => 'Usuário',
-    'newUser'                           => 'Novo Usuário',
+    'user'                          => 'Usuário',
+    'users'                         => 'Usuários',
+    'newUser'                       => 'Novo Usuário',
+    'users_access'                  => 'Regras de acesso',
 
 ];

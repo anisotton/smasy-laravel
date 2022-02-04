@@ -27,10 +27,15 @@ return [
     'Important'                     => 'Importante',
     'Warning'                       => 'Aviso',
     'Information'                   => 'Informação',
+    //Smasy
     'system_settings'               => 'CONFIGURAÇÕES DO SISTEMA',
-    'users'                         => 'Usuários',
-    'access_rules'                  => 'Regras de Acesso',
     'layout_settings'               => 'Configurações de Layout',
+    //Users
+    'users'                         => 'Usuários',
+    'users_list'                    => 'Listar',
+    'users_new'                     => 'Adicionar',
+    'users_access'                  => 'Regras de acesso',
+    //End Users
 
 
 

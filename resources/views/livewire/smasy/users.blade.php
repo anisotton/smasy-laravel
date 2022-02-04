@@ -31,7 +31,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 
 @section('content')
 <div>
-<a href="{{ route('settings.createUser') }}" wire:click.prevent="$toggle('showCreateForm')" class="btn btn-success">{{ __('createUser.newUser') }}</a>
+<a href="{{ route('user.new') }}" wire:click.prevent="$toggle('showCreateForm')" class="btn btn-success">{{ __('createUser.newUser') }}</a>
 </div>
 
     {{-- Minimal example / fill data using the component slot --}}
