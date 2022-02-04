@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => '',
+    'title' => 'Smasy',
+    'title_prefix' => 'Smasy - ',
     'title_postfix' => '',
 
     /*
@@ -321,13 +321,25 @@ return [
         ['header' => 'system_settings'],
         [
             'text' => 'users',
-            'url'  => 'settings/users',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'access_rules',
-            'url'  => 'settings/access-rules',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-users-cog',
+            'submenu' => [
+                [
+                    'text' => 'users_list',
+                    'url'  => 'settings/users',
+                    'icon' => 'fas fa-fw fa-users',
+                ],
+                [
+                    'text' => 'users_new',
+                    'url'  => 'settings/users/new',
+                    'icon' => 'fas fa-fw fa-user-plus',
+                ],
+                [
+                    'text' => 'users_access',
+                    'url'  => 'settings/users/access-rules',
+                    'icon' => 'fas fa-fw fa-id-card',
+                ],
+            ]
         ],
         [
             'text' => 'layout_settings',
