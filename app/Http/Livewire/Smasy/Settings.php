@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Smasy;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class Settings extends Component
 {
@@ -30,11 +33,39 @@ class Settings extends Component
             'order' => [[1, 'asc']],
             'columns' => [['data' =>'id'],['data' =>'name'],['data' =>'email']],
         ];
+
         return view('livewire.smasy.users', [
             'config' => $config,
         ]);
     }
-    public function new(){
-        return view('livewire.smasy.createUser');
+    public function new()
+    {
+        return view('livewire.smasy.new');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:5',
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required|min:6'
+        ]);
+        User::insertOrIgnore([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return $this->users();
+    }
+
+    public function update($id)
+    {
+        //$user = DB::table('users')->where('id', '=', $id)->first();
+        //->where('id')==$id->get();
+
+        dd($user);
+
+        return view('livewire.smasy.edit', compact('user'));
     }
 }

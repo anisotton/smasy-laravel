@@ -24,12 +24,18 @@ return [
     'level_two'                     => 'Level 2',
     'level_three'                   => 'Level 3',
     'labels'                        => 'LABELS',
-    'users'                         => 'Users',
-    'access_rules'                  => 'Acess Rules',
-    'layout_settings'               => 'Layout Settings',
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
+    //Smasy
     'system_settings'               => 'SYSTEM SETTINGS',
+    'layout_settings'               => 'Layout Settings',
+    'access_rules'                  => 'Acess Rules',
+    //Users
+    'users'                         => 'Users',
+    'users_list'                    => 'List',
+    'users_new'                     => 'Add',
+    'users_access'                  => 'Users Access',
+    //End Users
 
 ];

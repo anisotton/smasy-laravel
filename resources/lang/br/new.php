@@ -21,5 +21,6 @@ return [
     'number'                            => 'Numero',
     'address'                           => 'Endereço',
     'user'                              => 'Usuário',
+    'passwd'                            => 'Senha'
 
 ];

@@ -21,5 +21,6 @@ return [
     'number'                            => 'Number',
     'address'                           => 'Address',
     'user'                              => 'User',
+    'passwd'                            => 'Password'
 
 ];

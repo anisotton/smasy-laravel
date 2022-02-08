@@ -30,11 +30,12 @@ return [
     //Smasy
     'system_settings'               => 'CONFIGURAÇÕES DO SISTEMA',
     'layout_settings'               => 'Configurações de Layout',
+    'access_rules'                  => 'Regras de Acesso',
     //Users
     'users'                         => 'Usuários',
     'users_list'                    => 'Listar',
     'users_new'                     => 'Adicionar',
-    'users_access'                  => 'Regras de acesso',
+    'users_access'                  => 'Acesso de Usuários',
     //End Users
 
 
