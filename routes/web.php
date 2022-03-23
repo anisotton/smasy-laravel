@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\{
     Route,
     App,
@@ -43,11 +44,11 @@ Route::group(['prefix' => '{language}',], function () {
             })->name('home');
             //Users
             Route::group(['prefix' => '/users',], function () {
-                Route::get('/', [Settings::class, 'users'])->name('user.list');
-                Route::get('/new', [Settings::class, 'new'])->name('user.new');
+                Route::get('/', [UserController::class, 'users'])->name('user.list');
+                Route::get('/new', [UserController::class, 'new'])->name('user.new');
                 Route::get('/access-rules', AccessRules::class)->name('user.access-rules');
-                Route::post('/new', [Settings::class, 'store'])->name('user.store');
-                Route::get('/edit/{id}', [Settings::class, 'update'])->name('user.update');
+                Route::post('/new', [UserController::class, 'store'])->name('user.store');
+                Route::get('/edit/{id}', [UserController::class, 'update'])->name('user.update');
             });
         });
     });

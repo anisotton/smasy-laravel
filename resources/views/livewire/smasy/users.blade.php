@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 
-
 @section('content_header')
 
 <h1>{{ __('user.user') }}</h1>
@@ -33,17 +32,16 @@ $heads = [
             <td>{{$row->name}}</td>
             <td>{{$row->email}}</td>
             <td>
+                <div>
             <nobr>
-            <a href="{{ route('user.update', $row->id) }}" wire:click.prevent="$toggle('showCreateForm')" class="btn btn-xs btn-default text-primary mx-1 shadow">
+            <a href="{{ route('user.update', $row->id) }}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
             </a>
-            <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+            <a wire:click="updateActive({{$row->id}})" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                 <i class="fa fa-lg fa-fw fa-trash"></i>
-            </button>
-            <button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                <i class="fa fa-lg fa-fw fa-eye"></i>
-            </button>
+            </a>
             </nobr>
+        </div>
             </td>
         </tr>
     @endforeach
