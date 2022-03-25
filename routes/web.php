@@ -14,6 +14,7 @@ use App\Http\Livewire\Smasy\{
 use App\Http\Livewire\Smasy\User\{
     AccessRules,
 };
+
 URL::defaults(['language' => app('getClientLanguage')]);
 
 /*
@@ -49,6 +50,7 @@ Route::group(['prefix' => '{language}',], function () {
                 Route::get('/access-rules', AccessRules::class)->name('user.access-rules');
                 Route::post('/new', [UserController::class, 'store'])->name('user.store');
                 Route::get('/edit/{id}', [UserController::class, 'update'])->name('user.update');
+                Route::get('/active/{id}', [UserController::class, 'updateActive'])->name('user.active');
             });
         });
     });

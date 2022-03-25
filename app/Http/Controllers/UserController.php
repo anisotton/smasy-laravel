@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function index()
     {
-      return UserResource::collection(User::with('ratings')->paginate(25));
+        return UserResource::collection(User::with('ratings')->paginate(25));
     }
 
     public function users()
@@ -25,10 +25,12 @@ class UserController extends Controller
 
         $users = DB::table('users')->get(['id', 'name', 'email'])->toArray();
 
+        # Review: $users = User::get(['id', 'name', 'email'])
+
         $config = [
             'data' => $users,
             'order' => [[1, 'asc']],
-            'columns' => [['data' =>'id'],['data' =>'name'],['data' =>'email']],
+            'columns' => [['data' => 'id'], ['data' => 'name'], ['data' => 'email']],
         ];
 
         return view('livewire.smasy.users', [
@@ -41,13 +43,18 @@ class UserController extends Controller
         return view('livewire.smasy.new');
     }
 
-    public function updateActive($id)
+    public function updateActive($lang, $id)
     {
-        //$user = DB::table('users')->where('id', '=', $id)->first();
-
-        dd($id);
-
-        //return view('livewire.smasy.edit', compact('user'));
+        if ($id != null) {
+            if (User::where('id', '=', $id) != null) {
+                if (((User::where('id', '=', $id)->first())->active) == 1) {
+                    User::where('id', '=', $id)->update(['active' => 0]);
+                } else {
+                    User::where('id', '=', $id)->update(['active' => 1]);
+                }
+            }
+        }
+        return $this->users();
     }
 
     public function store(Request $request)
@@ -56,30 +63,27 @@ class UserController extends Controller
             'name' => 'required|min:5',
             'email' => 'required|email:rfc,dns'
         ]);
-        if($request['id']!=null){
-            DB::table('users')
-              ->where('id', $request['id'])
-              ->update(['name' => $request['name'],'email' => $request['email']]);
-        }else{
-        $request->validate([
-            'password' => 'required|min:6'
-        ]);
-        User::insert([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'active' => 1
-        ]);
-    }
+        if ($request['id'] != null) {
+            User::where('id', $request['id'])
+                ->update(['name' => $request['name'], 'email' => $request['email'], 'active' => $request['active']]);
+        } else {
+            $request->validate([
+                'password' => 'required|min:6'
+            ]);
+            User::insert([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'active' => 1
+            ]);
+        }
 
         return $this->users();
     }
 
     public function update($lang, $id)
     {
-        $user = DB::table('users')->where('id', '=', $id)->first();
-
-        //dd($user);
+        $user = User::where('id', '=', $id)->first();
 
         return view('livewire.smasy.edit', compact('user'));
     }

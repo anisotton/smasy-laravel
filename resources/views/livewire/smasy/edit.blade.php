@@ -2,55 +2,49 @@
 
 @section('content_header')
 
-<h1>{{ __('new.newUser') }}</h1>
+    <h1>{{ __('new.newUser') }}</h1>
 
 @stop
 
 @section('content')
 
-@php
+    <form method="POST" action="{{ route('user.store') }}">
 
-//dd($user);
+        @csrf
 
-@endphp
+        <x-adminlte-input name="name" label="{{ __('new.name') }}" placeholder="{{ __('new.fullName') }}"
+            label-class="text-lightblue" value="{{ $user->name }}" required>
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-user text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
 
-<form method="POST" action="{{ route('user.store') }}">
+        <x-adminlte-input name="email" label="Email" placeholder="{{ __('new.exEmail') }}" label-class="text-lightblue"
+            value="{{ $user->email }}" required>
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="far fa-envelope text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
 
-    @csrf
+        <input type="text" name="id" id="id" value="{{ $user->id }}" style="visibility:hidden">
 
-    <x-adminlte-input name="name" label="{{ __('new.name') }}" placeholder="{{ __('new.fullName') }}" label-class="text-lightblue" value="{{$user->name}}" required>
-        <x-slot name="prependSlot">
-            <div class="input-group-text">
-                <i class="fas fa-user text-lightblue"></i>
-            </div>
-        </x-slot>
-    </x-adminlte-input>
+        <input type="text" name="active" id="active" value="{{ $user->active }}" style="visibility:hidden">
 
-    <x-adminlte-input name="email" label="Email" placeholder="{{ __('new.exEmail') }}" label-class="text-lightblue" value="{{$user->email}}" required>
-        <x-slot name="prependSlot">
-            <div class="input-group-text">
-                <i class="far fa-envelope text-lightblue"></i>
-            </div>
-        </x-slot>
-    </x-adminlte-input>
+        @error('email')
+            <span class="error">{{ $message }}</span>
+        @enderror
 
-    <input type="text" name="id" id="id" value="{{$user->id}}" style="visibility:hidden">
+        <div>
+            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                icon="fas fa-lg fa-save" />
+        </div>
 
-    @error('email') <span class="error">{{ $message }}</span> @enderror
+    </form>
 
-<div>
-    <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save"/>
-</div>
-
-</form>
-
-@stop
-@section('js')
-    <script>
-        $(document).ready( function () {
-           // $('#table1').DataTable();
-        } );
-    </script>
 @stop
 
 @section('plugins.Datatables', true)
