@@ -23,14 +23,14 @@ class UserController extends Controller
     public function users()
     {
 
-        $users = DB::table('users')->get(['id', 'name', 'email'])->toArray();
+        $users = DB::table('users')->get(['id', 'name', 'email', 'active'])->toArray();
 
         # Review: $users = User::get(['id', 'name', 'email'])
 
         $config = [
             'data' => $users,
             'order' => [[1, 'asc']],
-            'columns' => [['data' => 'id'], ['data' => 'name'], ['data' => 'email']],
+            'columns' => [['data' => 'id'], ['data' => 'name'], ['data' => 'email'], ['data' => 'active']],
         ];
 
         return view('livewire.smasy.users', [

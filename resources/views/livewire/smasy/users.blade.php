@@ -34,7 +34,12 @@ $heads = ['ID', 'Name', ['label' => 'Email', 'width' => 40], ['label' => 'Action
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </a>
                             <a href="{{ route('user.active', $row->id) }}"
-                                class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                                @if ($row->active == 1)
+                                class="btn btn-xs btn-default text-danger mx-1 shadow"
+                                @else
+                                class="btn btn-xs btn-default text-primary mx-1 shadow"
+                                @endif
+                                 title="Delete">
                                 <i class="fa fa-lg fa-fw fa-trash"></i>
                             </a>
                         </nobr>
