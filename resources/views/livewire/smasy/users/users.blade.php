@@ -1,18 +1,3 @@
-@extends('adminlte::page')
-
-@section('content_header')
-
-    <h1>{{ __('user.user') }}</h1>
-
-@stop
-@php
-
-$heads = ['ID', 'Name', ['label' => 'Email', 'width' => 40], ['label' => 'Actions', 'no-export' => true, 'width' => 5]];
-
-@endphp
-
-@section('content')
-
     <div>
         <a href="{{ route('user.new') }}" wire:click.prevent="$toggle('showCreateForm')"
             class="btn btn-success">{{ __('new.newUser') }}</a>
@@ -33,14 +18,9 @@ $heads = ['ID', 'Name', ['label' => 'Email', 'width' => 40], ['label' => 'Action
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </a>
-                            <a href="{{ route('user.active', $row->id) }}"
-                                @if ($row->active == 1)
-                                class="btn btn-xs btn-default text-danger mx-1 shadow"
-                                @else
-                                class="btn btn-xs btn-default text-primary mx-1 shadow"
-                                @endif
-                                 title="Delete">
-                                <i class="fa fa-lg fa-fw fa-trash"></i>
+                            <a href="#" wire:click="updateActive({{$row->id}})"
+                                class="btn btn-xs btn-default mx-1 shadow" title="Delete">
+                                <i class="fa fa-lg fa-fw {{ $row->active == 0 ? $config['icons']['active'] : $config['icons']['inactive'] }}"></i>
                             </a>
                         </nobr>
                     </div>
@@ -49,6 +29,12 @@ $heads = ['ID', 'Name', ['label' => 'Email', 'width' => 40], ['label' => 'Action
         @endforeach
     </x-adminlte-datatable>
 
-@stop
+    {{-- <div>
+        TESTE ESTATICO
+
+        <p>{{ $message }}</p>
+
+        <input type="text" name="message" id="message" wire:model="message">
+    </div> --}}
 
 @section('plugins.Datatables', true)

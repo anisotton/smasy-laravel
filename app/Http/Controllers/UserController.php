@@ -29,6 +29,7 @@ class UserController extends Controller
 
         $config = [
             'data' => $users,
+            'icons' => ['active' => 'fa-check-circle text-success','inactive' => ' fa-times-circle text-danger'],
             'order' => [[1, 'asc']],
             'columns' => [['data' => 'id'], ['data' => 'name'], ['data' => 'email'], ['data' => 'active']],
         ];

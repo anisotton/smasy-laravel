@@ -9,7 +9,8 @@ use App\View\Composers\Smasy\BreadcrumbComposer;
 
 class SmasyComponent extends Component
 {
-    private $paramsShare = ['title','header'];
+    private $paramsShare = ['title','header','view'];
+    protected $paramsView;
 
     public function boot()
     {
@@ -18,5 +19,11 @@ class SmasyComponent extends Component
         }
 
         View::composer('*', BreadcrumbComposer::class);
+    }
+
+    public function render()
+    {
+        return view($this->view,$this->paramsView)
+        ->extends('layouts.app');
     }
 }

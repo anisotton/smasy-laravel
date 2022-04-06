@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\{
     Route,
     App,
@@ -8,8 +7,7 @@ use Illuminate\Support\Facades\{
     URL
 };
 use App\Http\Livewire\Smasy\{
-    Settings,
-    User
+    Users
 };
 use App\Http\Livewire\Smasy\User\{
     AccessRules,
@@ -45,12 +43,13 @@ Route::group(['prefix' => '{language}',], function () {
             })->name('home');
             //Users
             Route::group(['prefix' => '/users',], function () {
-                Route::get('/', [UserController::class, 'users'])->name('user.list');
-                Route::get('/new', [UserController::class, 'new'])->name('user.new');
+                Route::get('/', Users::class)->name('user.list');
+                Route::get('/new', [Users::class, 'new'])->name('user.new');
                 Route::get('/access-rules', AccessRules::class)->name('user.access-rules');
-                Route::post('/new', [UserController::class, 'store'])->name('user.store');
-                Route::get('/edit/{id}', [UserController::class, 'update'])->name('user.update');
-                Route::get('/active/{id}', [UserController::class, 'updateActive'])->name('user.active');
+                Route::post('/new', [Users::class, 'store'])->name('user.store');
+                Route::get('/edit/{id}', [Users::class, 'update'])->name('user.update');
+                Route::get('/active/{id}', [Users::class, 'updateActive'])->name('user.active');
+                Route::get('/teste', [Users::class, 'teste']);
             });
         });
     });

@@ -39,6 +39,10 @@
         @enderror
 
         <div>
+            <a href="{{ route('user.list') }}">
+                <x-adminlte-button type="button" href="{{ route('user.list') }}" class="btn-flat" label="Back"
+                    theme="danger" icon="fa fa-chevron-circle-left" />
+            </a>
             <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
                 icon="fas fa-lg fa-save" />
         </div>
