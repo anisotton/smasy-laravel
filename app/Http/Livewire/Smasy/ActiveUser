@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Livewire\Smasy;
+
+use App\Http\Livewire\Smasy\SmasyComponent;
+use App\Models\User;
+
+class ActiveUser extends SmasyComponent
+{
+    public $title  = 'user.users';
+    public $header = 'user.user';
+    protected $view = 'livewire.smasy.users.new';
+    public $id = 15;
+    public function render()
+    {
+        if ($this->id != null) {
+            if (User::where('id', '=', $this->id) != null) {
+                if (((User::where('id', '=', $this->id)->first())->active) == 1) {
+                    User::where('id', '=', $this->id)->update(['active' => 0]);
+                } else {
+                    User::where('id', '=', $this->id)->update(['active' => 1]);
+                }
+            }
+        }
+        return $this->users();
+    }
+}

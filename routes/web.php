@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\{
     URL
 };
 use App\Http\Livewire\Smasy\{
+    ListUsers,
+    NewUser,
     Users
 };
 use App\Http\Livewire\Smasy\User\{
@@ -43,13 +45,8 @@ Route::group(['prefix' => '{language}',], function () {
             })->name('home');
             //Users
             Route::group(['prefix' => '/users',], function () {
-                Route::get('/', Users::class)->name('user.list');
-                Route::get('/new', [Users::class, 'new'])->name('user.new');
                 Route::get('/access-rules', AccessRules::class)->name('user.access-rules');
-                Route::post('/new', [Users::class, 'store'])->name('user.store');
-                Route::get('/edit/{id}', [Users::class, 'update'])->name('user.update');
-                Route::get('/active/{id}', [Users::class, 'updateActive'])->name('user.active');
-                Route::get('/teste', [Users::class, 'teste']);
+                Route::get('/', Users::class);
             });
         });
     });

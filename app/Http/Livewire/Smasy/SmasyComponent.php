@@ -10,7 +10,6 @@ use App\View\Composers\Smasy\BreadcrumbComposer;
 class SmasyComponent extends Component
 {
     private $paramsShare = ['title','header','view'];
-    protected $paramsView;
 
     public function boot()
     {
@@ -23,7 +22,7 @@ class SmasyComponent extends Component
 
     public function render()
     {
-        return view($this->view,$this->paramsView)
+        return view($this->view)
         ->extends('layouts.app');
     }
 }
