@@ -33,10 +33,10 @@ Route::redirect('/', App::currentLocale());
 Route::group(['prefix' => '{language}',], function () {
     Route::middleware('auth')->group(function () {
 
-        //Home
-        Route::get('/', function () {
-            return view('welcome');
-        })->name('home');
+         //Home
+         Route::get('/', function () {
+             return view('welcome');
+         })->name('home');
 
         //Settings
         Route::group(['prefix' => '/settings',], function () {

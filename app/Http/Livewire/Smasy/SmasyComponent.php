@@ -9,7 +9,7 @@ use App\View\Composers\Smasy\BreadcrumbComposer;
 
 class SmasyComponent extends Component
 {
-    private $paramsShare = ['title','header','view'];
+    private $paramsShare = ['title','header'];
 
     public function boot()
     {
